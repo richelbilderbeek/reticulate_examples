@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("reticulate")
+          install.packages(c("reticulate", "testthat"))
         shell: Rscript {0}
 
       - name: Example 1
@@ -41,7 +41,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("reticulate")
+          install.packages(c("reticulate", "testthat"))
         shell: Rscript {0}
 
       - name: Example 2
