@@ -1,9 +1,8 @@
-# Example 2
+# Example 4
 #
-# Installs tensorflow
-# Installs using py_install
-# Uses Python 3.6
-
+# Installs scipy
+# Installs using conda_install
+# Uses default Python version
 
 # We use only one point of contact
 ormr_folder_name <- tempfile(pattern = "ormr_")
@@ -14,11 +13,11 @@ testthat::expect_false(
   basename(ormr_folder_name) %in% reticulate::conda_list()$name
 )
 
-# Create and activate
+# Create and activate default Python version
 python_path <- reticulate::conda_create(
-  envname = ormr_folder_name,
-  python_version = "3.6" # From https://stackoverflow.com/a/69978354
+  envname = ormr_folder_name
 )
+
 testthat::expect_true(file.exists(python_path))
 reticulate::use_condaenv(condaenv = ormr_folder_name)
 reticulate::use_python(python = python_path, required = TRUE)
@@ -31,9 +30,9 @@ testthat::expect_true(
 # Get a list of the installed Python packages
 reticulate:::conda_list_packages(envname = ormr_folder_name)
 
-# Tensorflow (or any other absent package) will not be in that list yet:
-# taken from https://anaconda.org/anaconda/tensorflow-base
-package_name <- "tensorflow"
+# scipy (or any other absent package) will not be in that list yet:
+# taken from https://anaconda.org/anaconda/scipy
+package_name <- "scipy"
 testthat::expect_false(
   package_name %in% reticulate:::conda_list_packages(
     envname = ormr_folder_name
@@ -41,7 +40,7 @@ testthat::expect_false(
 )
 
 # Install the Python package
-reticulate::py_install(
+reticulate::conda_install(
   packages = package_name,
   envname = ormr_folder_name
 )

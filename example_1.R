@@ -1,5 +1,9 @@
-# Example 1: use reticulate::conda_install to install tensorflow
+# Example 1
 #
+# Installs tensorflow
+# Installs using conda_install
+# Uses Python 3.6
+
 # We use only one point of contact
 ormr_folder_name <- tempfile(pattern = "ormr_")
 ormr_folder_name
