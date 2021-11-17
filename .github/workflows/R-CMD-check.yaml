@@ -8,6 +8,8 @@ name: R-CMD-check
 
 jobs:
   example_1:
+  # Installs tensorflow
+  # Installs using conda_install
 
     runs-on: ubuntu-latest
     env:
@@ -28,6 +30,8 @@ jobs:
         run: Rscript example_1.R
 
   example_2:
+  # Installs tensorflow
+  # Installs using py_install
 
     runs-on: ubuntu-latest
     env:
@@ -46,4 +50,26 @@ jobs:
 
       - name: Example 2
         run: Rscript example_2.R
+
+  example_3:
+  # Installs scipy
+  # Installs using conda_install
+
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("reticulate", "testthat"))
+        shell: Rscript {0}
+
+      - name: Example 3
+        run: Rscript example_3.R
 
