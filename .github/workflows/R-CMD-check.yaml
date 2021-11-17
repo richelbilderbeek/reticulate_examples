@@ -76,6 +76,7 @@ jobs:
       - name: Example 3
         run: Rscript example_3.R
 
+  example_4:
   # Installs scipy
   # Installs using conda_install
   # Uses default Python version
