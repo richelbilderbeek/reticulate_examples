@@ -25,7 +25,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Example 1
-        run: Rscript -e example_1.R
+        run: Rscript example_1.R
 
   example_2:
 
@@ -45,5 +45,5 @@ jobs:
         shell: Rscript {0}
 
       - name: Example 2
-        run: Rscript -e example_2.R
+        run: Rscript example_2.R
 
